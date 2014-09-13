@@ -1,24 +1,14 @@
 module Parser where
 -- {-# LINE 152 "LP.lhs" #-}
 import Prelude hiding (print)
--- {-# LINE 154 "LP.lhs" #-}
-import Control.Monad.Error
 import Data.List
-import Data.Char
--- {-# LINE 159 "LP.lhs" #-}
-import Text.PrettyPrint.HughesPJ hiding (parens)
-import qualified Text.PrettyPrint.HughesPJ as PP
 -- {-# LINE 164 "LP.lhs" #-}
 import Text.ParserCombinators.Parsec hiding (parse, State)
 import qualified Text.ParserCombinators.Parsec as P
 import Text.ParserCombinators.Parsec.Token
 import Text.ParserCombinators.Parsec.Language
--- {-# LINE 171 "LP.lhs" #-}
-import System.Console.Readline
-import System.IO hiding (print)
 
 import Term
-import LambdaPi
 
 -- {-# LINE 5 "Parser.lhs" #-}
 simplyTyped = makeTokenParser (haskellStyle { identStart = letter <|> P.char '_',
