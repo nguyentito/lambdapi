@@ -22,7 +22,7 @@ import System.IO hiding (print)
 -- putstrln x = putStrLn x
 
 import Term
-import PrinterLP
+import Printer
 
 type Context = [(Name, Info)]
 -- {-# LINE 801 "LP.lhs" #-}

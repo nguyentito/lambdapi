@@ -25,7 +25,6 @@ import Term
 import LambdaPi
 import Parser
 import Printer
-import PrinterLP
 
 -- {-# LINE 13 "Interpreter.lhs" #-}
 --  read-eval-print loop
