@@ -5,77 +5,77 @@ data Name = Global String
           | Quote Int
           deriving (Show, Eq)
 
-data CTerm_
-   =  Inf_  ITerm_
-   |  Lam_  CTerm_
--- {-# LINE 2 "CTerm_Nat.lhs" #-}
-   |  Zero_
-   |  Succ_ CTerm_
--- {-# LINE 2 "CTerm_Vec.lhs" #-}
-  |  Nil_ CTerm_
-  |  Cons_ CTerm_ CTerm_ CTerm_ CTerm_
--- {-# LINE 2 "CTerm_Eq.lhs" #-}
-   |  Refl_ CTerm_ CTerm_
--- {-# LINE 2 "CTerm_Fin.lhs" #-}
-  |  FZero_ CTerm_
-  |  FSucc_ CTerm_ CTerm_
+data CTerm
+   =  Inf  ITerm
+   |  Lam  CTerm
+-- {-# LINE 2 "CTermNat.lhs" #-}
+   |  Zero
+   |  Succ CTerm
+-- {-# LINE 2 "CTermVec.lhs" #-}
+  |  Nil CTerm
+  |  Cons CTerm CTerm CTerm CTerm
+-- {-# LINE 2 "CTermEq.lhs" #-}
+   |  Refl CTerm CTerm
+-- {-# LINE 2 "CTermFin.lhs" #-}
+  |  FZero CTerm
+  |  FSucc CTerm CTerm
 -- {-# LINE 1523 "LP.lhs" #-}
   deriving (Show, Eq)
 -- {-# LINE 1548 "LP.lhs" #-}
-data ITerm_
-   =  Ann_ CTerm_ CTerm_
-   |  Star_
-   |  Pi_ CTerm_ CTerm_
-   |  Bound_  Int
-   |  Free_  Name
-   |  ITerm_ :$: CTerm_
--- {-# LINE 2 "ITerm_Nat.lhs" #-}
-   |  Nat_
-   |  NatElim_ CTerm_ CTerm_ CTerm_ CTerm_
--- {-# LINE 2 "ITerm_Vec.lhs" #-}
-  |  Vec_ CTerm_ CTerm_
-  |  VecElim_ CTerm_ CTerm_ CTerm_ CTerm_ CTerm_ CTerm_
--- {-# LINE 2 "ITerm_Eq.lhs" #-}
-   |  Eq_ CTerm_ CTerm_ CTerm_
-   |  EqElim_ CTerm_ CTerm_ CTerm_ CTerm_ CTerm_ CTerm_
--- {-# LINE 2 "ITerm_Fin.lhs" #-}
-   |  Fin_ CTerm_
-   |  FinElim_ CTerm_ CTerm_ CTerm_ CTerm_ CTerm_
+data ITerm
+   =  Ann CTerm CTerm
+   |  Star
+   |  Pi CTerm CTerm
+   |  Bound  Int
+   |  Free  Name
+   |  ITerm :$: CTerm
+-- {-# LINE 2 "ITermNat.lhs" #-}
+   |  Nat
+   |  NatElim CTerm CTerm CTerm CTerm
+-- {-# LINE 2 "ITermVec.lhs" #-}
+  |  Vec CTerm CTerm
+  |  VecElim CTerm CTerm CTerm CTerm CTerm CTerm
+-- {-# LINE 2 "ITermEq.lhs" #-}
+   |  Eq CTerm CTerm CTerm
+   |  EqElim CTerm CTerm CTerm CTerm CTerm CTerm
+-- {-# LINE 2 "ITermFin.lhs" #-}
+   |  Fin CTerm
+   |  FinElim CTerm CTerm CTerm CTerm CTerm
 -- {-# LINE 1564 "LP.lhs" #-}
   deriving (Show, Eq)
 -- {-# LINE 1569 "LP.lhs" #-}
-data Value_
-   =  VLam_  (Value_ -> Value_)
-   |  VStar_
-   |  VPi_ Value_ (Value_ -> Value_)
-   |  VNeutral_ Neutral_
--- {-# LINE 2 "Value_Nat.lhs" #-}
-  |  VNat_
-  |  VZero_
-  |  VSucc_ Value_
--- {-# LINE 2 "Value_Vec.lhs" #-}
-  |  VNil_ Value_
-  |  VCons_ Value_ Value_ Value_ Value_
-  |  VVec_ Value_ Value_
--- {-# LINE 2 "Value_Eq.lhs" #-}
-  |  VEq_ Value_ Value_ Value_
-  |  VRefl_ Value_ Value_
--- {-# LINE 2 "Value_Fin.lhs" #-}
-  |  VFZero_ Value_
-  |  VFSucc_ Value_ Value_
-  |  VFin_ Value_
+data Value
+   =  VLam  (Value -> Value)
+   |  VStar
+   |  VPi Value (Value -> Value)
+   |  VNeutral Neutral
+-- {-# LINE 2 "ValueNat.lhs" #-}
+  |  VNat
+  |  VZero
+  |  VSucc Value
+-- {-# LINE 2 "ValueVec.lhs" #-}
+  |  VNil Value
+  |  VCons Value Value Value Value
+  |  VVec Value Value
+-- {-# LINE 2 "ValueEq.lhs" #-}
+  |  VEq Value Value Value
+  |  VRefl Value Value
+-- {-# LINE 2 "ValueFin.lhs" #-}
+  |  VFZero Value
+  |  VFSucc Value Value
+  |  VFin Value
 -- {-# LINE 1582 "LP.lhs" #-}
-data Neutral_
-   =  NFree_  Name
-   |  NApp_  Neutral_ Value_
--- {-# LINE 2 "Neutral_Nat.lhs" #-}
-  |  NNatElim_ Value_ Value_ Value_ Neutral_
--- {-# LINE 2 "Neutral_Vec.lhs" #-}
-  |  NVecElim_ Value_ Value_ Value_ Value_ Value_ Neutral_
--- {-# LINE 2 "Neutral_Eq.lhs" #-}
-  |  NEqElim_ Value_ Value_ Value_ Value_ Value_ Neutral_
--- {-# LINE 2 "Neutral_Fin.lhs" #-}
-  |  NFinElim_ Value_ Value_ Value_ Value_ Neutral_
+data Neutral
+   =  NFree  Name
+   |  NApp  Neutral Value
+-- {-# LINE 2 "NeutralNat.lhs" #-}
+  |  NNatElim Value Value Value Neutral
+-- {-# LINE 2 "NeutralVec.lhs" #-}
+  |  NVecElim Value Value Value Value Value Neutral
+-- {-# LINE 2 "NeutralEq.lhs" #-}
+  |  NEqElim Value Value Value Value Value Neutral
+-- {-# LINE 2 "NeutralFin.lhs" #-}
+  |  NFinElim Value Value Value Value Neutral
 
 
   {-# LINE 5 "Interpreter.lhs" #-}
