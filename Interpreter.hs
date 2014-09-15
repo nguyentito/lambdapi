@@ -149,19 +149,6 @@ data Interpreter i c v t tinf inf =
       isparse :: CharParser () (Stmt i tinf),
       iassume :: State v inf -> (String, tinf) -> IO (State v inf) }
 
-st :: Interpreter ITerm CTerm Value Type Info Info
-st = I { iname = "the simply typed lambda calculus",
-         iprompt = "ST> ",
-         iitype = \ v c -> iType 0 c,
-         iquote = quote0,
-         ieval  = \ e x -> iEval x (e, []),
-         ihastype = HasType,
-         icprint = cPrint 0 0,
-         itprint = tPrint 0,
-         iiparse = parseITerm 0 [],
-         isparse = parseStmt [],
-         iassume = \ s (x, t) -> stassume s x t }
-
 lp :: Interpreter ITerm_ CTerm_ Value_ Value_ CTerm_ Value_
 lp = I { iname = "lambda-Pi",
          iprompt = "LP> ",
@@ -238,9 +225,6 @@ lpve =      [(Global "Zero", VZero_),
 repLP :: Bool -> IO ()
 repLP b = readevalprint lp (b, [], lpve, lpte)
 
-repST :: Bool -> IO ()
-repST b = readevalprint st (b, [], [], [])
- 
 iinfer int d g t =
   case iitype int d g t of
     Left e -> putStrLn e >> return Nothing

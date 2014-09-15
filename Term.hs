@@ -1,49 +1,9 @@
 module Term where
 
-data Name
-   =  Global  String
-   |  Local   Int
-   |  Quote   Int
-  deriving (Show, Eq)
--- {-# LINE 705 "LP.lhs" #-}
-data Type
-   =  TFree  Name
-   |  Fun    Type Type
-  deriving (Show, Eq)
--- {-# LINE 712 "LP.lhs" #-}
-data Value
-   =  VLam      (Value -> Value)
-   |  VNeutral  Neutral
--- {-# LINE 725 "LP.lhs" #-}
-data Neutral
-   =  NFree  Name
-   |  NApp   Neutral Value
--- {-# LINE 732 "LP.lhs" #-}
-vfree :: Name -> Value
-vfree n = VNeutral (NFree n)
--- {-# LINE 786 "LP.lhs" #-}
-data Kind = Star
-  deriving (Show)
-
-data Info
-   =  HasKind  Kind
-   |  HasType  Type 
-  deriving (Show)
-
-
--- {-# LINE 670 "LP.lhs" #-}
-data ITerm
-   =  Ann    CTerm Type
-   |  Bound  Int
-   |  Free   Name
-   |  ITerm :@: CTerm
-  deriving (Show, Eq)
-
-data CTerm
-   =  Inf  ITerm 
-   |  Lam  CTerm
-  deriving (Show, Eq)
-
+data Name = Global String
+          | Local Int
+          | Quote Int
+          deriving (Show, Eq)
 
 data CTerm_
    =  Inf_  ITerm_
